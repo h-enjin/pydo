@@ -6,6 +6,22 @@
 
 import sqlite3,sys
 
+def showTodo():
+	db_connecter = sqlite3.connect("data.db")
+	cursor = db_connecter.cursor()
+	cursor.execute("select * from todo_list")
+	
+	result = cursor.fetchall()
+
+	print "==TODO Lists=="
+	for row in result:
+		print row[0]
+	
+	print ""
+
+	cursor.close()
+	db_connecter.close()
+
 def addTodo():
 	db_connecter = sqlite3.connect("data.db")
 
@@ -24,13 +40,15 @@ def selectMenu():
 	exit_flg = True
 
 	while exit_flg:
-		print "--MENU--\nadd:TODO追加\nexit:終了"
+		print "--MENU--\nadd:TODO追加\nlist:TODO表示\nexit:終了"
 		# メニュー選択
 		menu = sys.stdin.readline().split("\n")
 		input_menu = menu[0]
 
 		if input_menu == "add":
 			addTodo()
+		elif input_menu == "list":
+			showTodo()
 		elif input_menu == "exit":
 			exit_flg = False
 
