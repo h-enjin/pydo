@@ -10,7 +10,9 @@ if __name__ == "__main__":
 	
 	db_connecter = sqlite3.connect("data.db")
 
-	sql = "insert into todo_list values ('1', 'test', 'false')"
+	mes = sys.stdin.readline().split("\n")
+
+	sql = "insert into todo_list values ('" + mes[0] +  "', 'false')"
 	db_connecter.execute(sql)
 
 	db_connecter.commit()
