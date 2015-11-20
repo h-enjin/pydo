@@ -15,7 +15,10 @@ def showAllTodo():
 
 	print "==TODO Lists=="
 	for row in result:
-		print row[0]
+		if row[1] == "true":
+			print u"✓ " + row[0]
+		else:
+			print u"・" + row[0]
 	
 	print ""
 
