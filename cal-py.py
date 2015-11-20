@@ -9,7 +9,7 @@ import sqlite3,sys
 def showTodo():
 	db_connecter = sqlite3.connect("data.db")
 	cursor = db_connecter.cursor()
-	cursor.execute("select * from todo_list")
+	cursor.execute("select * from todo_list where flg='false'")
 	
 	result = cursor.fetchall()
 
